@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عيادة الدكتورة ميريام يوسف — احجز موعدك أونلاين</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-mark">🦷</div>
+    <div class="brand-name" id="clinicNameLabel">عيادة الدكتورة ميريام يوسف</div>
+  </div>
+  <nav>
+    <a href="#services">الخدمات</a>
+    <a href="#booking">احجز موعد</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow"><span class="pulse-dot"></span> حجز فوري بدون انتظار على الهاتف</div>
+      <h1>ابتسامتك تبدأ<br>بموعد صحيح</h1>
+      <p>طب أسنان عام وتجميلي بأيدٍ أمينة — احجز موعدك في أقل من دقيقة واختر الوقت المناسب من المواعيد المتاحة فعليًا داخل العيادة.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-accent">احجز موعدك الآن</a>
+        <a href="#services" class="btn btn-outline">تصفح الخدمات</a>
+      </div>
+    </div>
+    <div class="hero-ticket">
+      <div class="tk-row"><span>تذكرة موعد</span><span>د. ميريام يوسف</span></div>
+      <div class="tk-title">حجزك في مكان أمين</div>
+      <div class="tk-divider"></div>
+      <div class="tk-row tk-big"><span>⏰ يفتح الحجز</span><span id="clinicHoursLabel">15:00 – 22:00</span></div>
+      <div class="tk-row"><span>📅 أيام العمل</span><span id="clinicDaysLabel">الأحد – الخميس</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">خدماتنا</div>
+      <h2>اختر الخدمة المناسبة</h2>
+      <p>خدمات طب الأسنان العام والتجميلي بأسعار واضحة ومدة زمنية محددة لكل موعد.</p>
+    </div>
+    <div class="services-grid" id="servicesGrid">
+      <!-- تُملأ عبر JS -->
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">الحجز</div>
+      <h2>احجز موعدك</h2>
+      <p>اختر التاريخ ثم الوقت المتاح، وأكمل بياناتك — سيصل تأكيد الحجز فورًا لفريق العيادة.</p>
+    </div>
+
+    <form class="booking-panel" id="bookingForm">
+      <div class="booking-col left">
+        <div class="field">
+          <label for="dateInput">التاريخ</label>
+          <input type="date" id="dateInput" required>
+        </div>
+        <div class="field">
+          <label>الوقت المتاح</label>
+          <div class="slots-grid" id="slotsGrid">
+            <div class="slots-empty">اختر تاريخًا لعرض المواعيد المتاحة</div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-col right">
+        <div class="field">
+          <label for="serviceSelect">الخدمة</label>
+          <select id="serviceSelect" required>
+            <option value="" disabled selected>اختر الخدمة</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="nameInput">الاسم الكامل</label>
+          <input type="text" id="nameInput" placeholder="مثال: أحمد محمد" required>
+        </div>
+        <div class="field">
+          <label for="phoneInput">رقم الهاتف</label>
+          <input type="tel" id="phoneInput" placeholder="05xxxxxxxx" required>
+        </div>
+        <div class="field">
+          <label for="notesInput">ملاحظات (اختياري)</label>
+          <textarea id="notesInput" placeholder="أي معلومة تود إخبار الطبيب بها"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%">تأكيد الحجز</button>
+        <div class="form-msg" id="formMsg"></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer id="contact">
+  <div>للاستفسار أو التعديل على موعدكم، تواصلوا معنا مباشرة.</div>
+  <div style="margin-top:6px">جميع الحقوق محفوظة — <span id="footerClinicName">عيادة الدكتورة ميريام يوسف</span></div>
+</footer>
+
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-ticket">
+    <button class="confirm-close" id="confirmClose">✕</button>
+    <div class="badge">✅ تم تأكيد الحجز</div>
+    <h3>موعدك جاهز</h3>
+    <div class="num" id="confirmTicketNum">#0000</div>
+    <div class="confirm-row"><span>المريض</span><span id="confirmName">—</span></div>
+    <div class="confirm-row"><span>الخدمة</span><span id="confirmService">—</span></div>
+    <div class="confirm-row"><span>التاريخ</span><span id="confirmDate">—</span></div>
+    <div class="confirm-row"><span>الوقت</span><span id="confirmTime">—</span></div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
