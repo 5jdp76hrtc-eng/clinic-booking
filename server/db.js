@@ -54,5 +54,35 @@ if (serviceCount === 0) {
   const insertMany = db.transaction((rows) => rows.forEach((r) => insert.run(r)));
   insertMany(defaults);
 }
+// ---------- إضافة خدمات التجميل الجديدة (بدون التأثير على الخدمات الموجودة) ----------
+  const checkExists = db.prepare("SELECT id FROM services WHERE name = ?");
+  const insertOne = db.prepare(`
+    INSERT INTO services (name, description, duration_minutes, price)
+    VALUES (@name, @description, @duration_minutes, @price)
+  `);
+
+  const newServices = [
+    { name: "فلر الشفة", description: "حقن فلر لملء وتحديد الشفاه", duration_minutes: 30, price: 0 },
+    { name: "فلر الأصداغ", description: "حقن فلر لملء منطقة الأصداغ", duration_minutes: 30, price: 0 },
+    { name: "فلر الوجنات", description: "حقن فلر لإبراز عظام الوجنتين", duration_minutes: 30, price: 0 },
+    { name: "فلر تكساس", description: "حقن فلر تكساس لنحت خط الفك", duration_minutes: 30, price: 0 },
+    { name: "فلر الذقن", description: "حقن فلر لتحديد وإبراز الذقن", duration_minutes: 30, price: 0 },
+    { name: "فلر تغيير شامل", description: "جلسة فلر شاملة لكل ملامح الوجه", duration_minutes: 30, price: 0 },
+    { name: "بوتوكس حول العين", description: "بوتوكس لتنعيم خطوط ما حول العين", duration_minutes: 30, price: 0 },
+    { name: "بوتوكس الجبين", description: "بوتوكس لتنعيم خطوط الجبين", duration_minutes: 30, price: 0 },
+    { name: "بوتوكس الأنف", description: "بوتوكس لتحسين شكل الأنف", duration_minutes: 30, price: 0 },
+    { name: "بوتوكس تحديد الوجه", description: "بوتوكس لتحديد ونحت ملامح الوجه", duration_minutes: 30, price: 0 },
+    { name: "ميزو نضارة", description: "جلسة ميزوثيرابي لنضارة البشرة", duration_minutes: 30, price: 0 },
+    { name: "ميزو تبييض", description: "جلسة ميزوثيرابي لتفتيح لون البشرة", duration_minutes: 30, price: 0 },
+    { name: "ميزو إزالة تصبغات", description: "جلسة ميزوثيرابي لإزالة التصبغات", duration_minutes: 30, price: 0 },
+    { name: "ميزو شد", description: "جلسة ميزوثيرابي لشد البشرة", duration_minutes: 30, price: 0 },
+    { name: "إبرة الشد والنضارة", description: "إبرة لشد ونضارة البشرة بأنواعها", duration_minutes: 30, price: 0 },
+    { name: "إبرة تحفيز الكولاجين", description: "إبرة لتحفيز إنتاج الكولاجين بالبشرة", duration_minutes: 30, price: 0 },
+  ];
+
+  newServices.forEach((s) => {
+    const exists = checkExists.get(s.name);
+    if (!exists) insertOne.run(s);
+  });
 
 module.exports = db;
