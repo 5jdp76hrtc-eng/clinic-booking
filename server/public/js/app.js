@@ -32,7 +32,7 @@ async function loadServices() {
       <p>${s.description || ""}</p>
       <div class="service-meta">
         <span>⏱ ${s.duration_minutes} دقيقة</span>
-        <b>${s.price} ر.س</b>
+        
       </div>
     </div>`
     )
